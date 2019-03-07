@@ -1,0 +1,16 @@
+<div class="pageContainer">
+  <div *ngIf="this.followerPeople.length; else noRes">
+    <ng-container *ngFor="let item of this.followerPeople; trackBy: trackByIndex">
+      <div class="card">
+        <a [routerLink]="'/peopleHome/'+item.followedPerson._id">
+          <nz-avatar [nzSrc]="item.followedPerson.avatar"></nz-avatar>
+        </a>{{item.followedPerson.userName}}
+      </div>
+    </ng-container>
+  </div>
+  <ng-template #noRes>
+    <div class="noRes">
+      此童鞋还没有关注小伙伴😯哦。。。
+    </div>
+  </ng-template>
+</div>

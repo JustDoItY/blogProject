@@ -1,0 +1,19 @@
+:host {
+  display: block;
+  font-size: 15px;
+
+  .content {
+    position: relative;
+    margin-bottom: 5px;
+  
+    textarea {
+      resize: none;
+    }
+
+    span {
+      position: absolute;
+      right: 11px;
+      bottom: 4px;
+    }
+  }
+}

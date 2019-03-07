@@ -1,0 +1,8 @@
+<ckeditor [(ngModel)]="mycontent"
+            #myckeditor
+            [config]="ckeConfig"
+            debounce="500"
+            (change)="onChange()"></ckeditor>
+<div class="text-right">
+    <span>{{maxlenght - mycontent.length}}字符(包含标签在内)</span>
+</div>

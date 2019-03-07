@@ -1,0 +1,27 @@
+<div class="pageContainer">
+  <div class="header">
+    <nz-avatar [nzSize]="64" [nzSrc]="this.userInfo.avatar"></nz-avatar>
+    <span class="userName" [textContent]="this.userInfo.userName"></span>
+    <div class="float-right"
+         *ngIf="this.loginStatus"
+         style="padding-top: 10px">
+      <button nz-button
+              routerLink="/userInfo"
+              nzType="primary">编辑个人资料</button>
+    </div>
+  </div>
+
+  <div class="content">
+    <nz-card style="width: 100%;">
+        <nz-card-tab>
+          <nz-tabset nzSize="large" [(nzSelectedIndex)]="index">
+            <nz-tab nzTitle="收藏"></nz-tab>
+            <nz-tab nzTitle="关注"></nz-tab>
+            <nz-tab nzTitle="文章"></nz-tab>
+          </nz-tabset>
+        </nz-card-tab>
+        <attention-component *ngIf="index===1" [userId]="this.userInfo._id"></attention-component>
+        <articles-component *ngIf="index===2" [userId]="this.userInfo._id"></articles-component>
+    </nz-card>
+  </div>
+</div>

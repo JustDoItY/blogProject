@@ -1,0 +1,36 @@
+<div class="pageContainer">
+  <div *ngIf="this.loginStatus">
+    <div class="content">
+      <textarea rows="4"
+                nz-input
+                [maxlength]="this.maxLength"
+                placeholder="分享自己开心的事吧"
+                [(ngModel)]="inputValue"></textarea>
+      <span>{{maxLength - inputValue.length}}</span>
+    </div>
+    <button class="btn"
+            type="button"
+            nzType="primary"
+            [disabled]="this.inputValue.length === 0"
+            (click)="this.submit()"
+            nz-button>发布</button>
+  </div>
+
+  <div>
+    <ng-container *ngIf="this.dynamics.length; else noRes">
+        <ng-container *ngFor="let dynamic of this.dynamics; trackBy: trackByIndex">
+          <card-component [user]="dynamic.userID"
+                          [id]="dynamic._id"
+                          type="dynamic"
+                          [content]="dynamic.content"
+                          [good]="dynamic.good"
+                          [writeDate]="dynamic.writeDate"></card-component>
+        </ng-container>
+      </ng-container>
+      <ng-template #noRes>
+        <div class="text-center font">
+          没有查到动态
+        </div>
+      </ng-template>
+  </div>
+</div>

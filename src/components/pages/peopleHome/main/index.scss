@@ -1,0 +1,15 @@
+:host {
+  display: block;
+
+  .header {
+    margin-bottom: 10px;
+
+    .ant-avatar {
+      margin-right: 5px;
+    }
+
+    .userName {
+      font-size: 25px;
+    }
+  }
+}

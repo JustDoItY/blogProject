@@ -1,0 +1,40 @@
+<ul nz-menu nzMode="horizontal">
+  <li nz-menu-item>
+    <a routerLink="/home">logo</a>
+  </li>
+  <li nz-menu-item>
+    <a routerLink="/home">首页</a>
+  </li>
+  <li nz-menu-item>
+    <a routerLink="/dynamic">动态</a>
+  </li>
+  <li nz-menu-item>
+    <a routerLink="/resources">资源</a>
+  </li>
+  <li nz-menu-item>
+    <a routerLink="/about">关于</a>
+  </li>
+  <li nz-menu-item class="float-right" *ngIf="!this.loginStatus">
+    <span>
+      <a (click)="this.loginRegisterModal('登陆', true)">登陆</a> |
+      <a (click)="this.loginRegisterModal('注册', false)">注册</a>
+    </span>
+  </li>
+  <li nz-submenu class="float-right" *ngIf="this.loginStatus">
+    <nz-avatar [nzSrc]="this.userInfo.avatar" title></nz-avatar>
+    <ul>
+      <li nz-menu-item>
+        <a [routerLink]="'/peopleHome/'+this.userInfo._id">我的主页</a>
+      </li>
+      <li nz-menu-item>
+        <a routerLink="/userInfo">个人信息</a>
+      </li>
+      <li nz-menu-item>
+        <a routerLink="/edit">写文章</a>
+      </li>
+      <li nz-menu-item>
+        <a (click)="this.outLogin()">退出</a>
+      </li>
+    </ul>
+  </li>
+</ul>

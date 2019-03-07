@@ -1,0 +1,13 @@
+:host {
+  display: block;
+
+  .el-avatar {
+    &:hover {
+      cursor: pointer;
+    }
+
+    .el-avatar-input {
+      display: none;
+    }
+  }
+}

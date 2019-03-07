@@ -1,0 +1,13 @@
+<div class="pageContainer">
+  <ng-container *ngFor="let article of this.articles; trackBy: trackByIndex">
+    <card-component [title]="article.title"
+                    [id]="article._id"
+                    [user]="article.userID"
+                    [edit]="this.edit"
+                    type="article"
+                    [good]="article.good"
+                    [content]="article.content"
+                    [writeDate]="article.writeDate"
+                    (delete)="this.deleteArticle($event)"></card-component>
+    </ng-container>
+</div>

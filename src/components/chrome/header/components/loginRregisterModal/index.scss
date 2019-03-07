@@ -1,0 +1,28 @@
+:host {
+  display: block;
+
+  .ant-modal-header {
+    padding: 0 0 10px;
+  }
+
+  .ant-modal-body {
+    padding: 0;
+  }
+
+  .ant-modal-footer,
+  .ant-modal-header {
+    border: none;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .redbor {
+    border-color: red;
+  }
+
+  .gap {
+    margin-bottom: 10px;
+  }
+}

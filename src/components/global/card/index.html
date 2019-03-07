@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="info">
+    <a [routerLink]="'/peopleHome/'+this.user._id">{{user.userName}}</a> |
+    <span>{{writeDate | date:'yyyy年MM月dd日'}}</span>
+  </div>
+  <!-- 文章连接 -->
+  <a class="cardLink"
+     *ngIf="title; else dynamicContent"
+     [routerLink]="'/view/'+this.id">
+    {{title}}
+  </a>
+  <!-- 动态 -->
+  <ng-template #dynamicContent>
+    <pre>{{content}}</pre>
+  </ng-template>
+  <div style="float: right" *ngIf="this.edit">
+    <button nz-button nzType="primary" (click)="this.editArticle()">编辑</button>&nbsp;
+    <button nz-button nzType="default" (click)="this.deleteArticle()">删除</button>
+  </div>
+  <div>
+    <button nz-button
+            nzType="default"
+            (click)="this.pointGood()"
+            style="width: 60px; height: 30px">
+      <i nz-icon type="like" theme="outline"></i><span>{{this.good || 0}}</span>
+    </button>
+  </div>
+</div>

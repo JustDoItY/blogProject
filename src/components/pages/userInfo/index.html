@@ -1,0 +1,31 @@
+<div class="pageContainer">
+  <div class="form-group">
+    <label class="control-label">头像</label>
+    <div class="el-avatar" (click)="this.triggerInputClick()">
+      <nz-avatar [nzSize]="50" [nzSrc]="this.userInfo.avatar"></nz-avatar>&nbsp;
+      <input type="file"
+             accept="image/*"
+             class="el-avatar-input"
+             (input)="this.changeAvatar()"
+             #imgInput>
+    </div>
+    <span>(点击头像上传，支持JPG,PNG格式图片，小于4MB)</span>
+  </div>
+  <div class="form-group">
+    <label class="control-label">用户名</label>
+    <input nz-input
+           class="form-control"
+           [(ngModel)]="this.userInfo.userName">
+  </div>
+  <div class="form-group">
+      <label class="control-label">邮箱</label>
+      <input nz-input
+             class="form-control"
+             [(ngModel)]="this.userInfo.email">
+    </div>
+  <div class="bottom">
+    <button nzType="primary"
+            (click)="this.submit()"
+            nz-button>保存</button>
+  </div>
+</div>

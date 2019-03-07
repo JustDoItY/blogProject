@@ -1,0 +1,111 @@
+.pageContainer {
+  background-color: white;
+  padding: 20px;
+}
+
+.required-icon {
+  display: inline-block;
+  width: 7px;
+  margin-right: -7px;
+  position: relative;
+  top: -6px;
+  right: 3px;
+  color: #D15F66;
+
+  &::after {
+    content: '*';
+  }
+}
+
+.control-label {
+  padding: 5px;
+  text-align: right;
+  width: 70px;
+}
+
+
+.form-control.ng-touched { /* Copied from bootstrap.css */
+  &.ng-invalid {
+    border-color: #D96557;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+
+    &:focus {
+      border-color: #CE402F;
+      box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #ECB1AA;
+    }
+
+    + .input-group-addon {
+      color: white;
+      border-color: #D96557;
+      background-color: #D96557;
+    }
+  }
+
+  .input-form &.ng-valid.ng-not-empty {
+    border-color: #2ECC71;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+
+    &:focus {
+      border-color: #25A25A;
+      box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #7EE2A8;
+    }
+
+    + .input-group-addon {
+      color: white;
+      border-color: #2ECC71;
+      background-color: #2ECC71;
+    }
+  }
+}
+
+.form-group {
+  display: flex;
+  align-items: center;
+  padding-bottom: 10px;
+}
+
+.form-group .form-control {
+  flex: 1;
+}
+
+// fa图标
+.fa-question-circle-o, fa-question-circle {
+  cursor: help;
+}
+
+.float-right {
+  float: right;
+}
+
+.float-left {
+  float: left;
+}
+
+.position-right {
+  position: absolute;
+  right: 0;
+}
+
+.position-left {
+  position: absolute;
+  left: 0;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.bottom {
+  width: 60px;
+  margin: 5px auto;
+}
+
+.noRes {
+  color: #837a7a;
+  font-size: 20px;
+  text-align: center;
+}

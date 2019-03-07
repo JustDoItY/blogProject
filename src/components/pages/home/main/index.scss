@@ -1,0 +1,14 @@
+:host {
+  display: block;
+  height: 100%;
+
+  .ant-input-affix-wrapper {
+    width: 20%;
+    left: 80%;
+    margin: 10px 0;
+  }
+
+  .font {
+    font-size: 20px;
+  }
+}

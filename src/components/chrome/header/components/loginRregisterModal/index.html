@@ -1,0 +1,54 @@
+<div class="ant-modal-header">
+  <div class="ant-modal-title">
+    {{title}}
+  </div>
+</div>
+<div class="ant-modal-body">
+  <form #LoginResiterForm="ngForm">
+    <!-- 登陆状态表单项 -->
+    <div class="gap">
+      <input type="text"
+             nz-input
+             maxlength="10"
+             class="form-control"
+             placeholder="请输入用户名"
+             [(ngModel)]="this.userInfo.userName"
+             name="userName"
+             required/>
+    </div>
+    <div class="gap">
+      <input type="password"
+             nz-input
+             class="form-control"
+             placeholder="请输入密码"
+             [(ngModel)]="this.userInfo.paw"
+             name="paw"
+             required/>
+    </div>
+
+    <!-- 注册状态表单项 -->
+    <div *ngIf="!this.loginStatus">
+      <div class="gap">
+        <input type="email"
+               nz-input
+               class="form-control"
+               placeholder="请输入邮箱"
+               [(ngModel)]="this.userInfo.email"
+               name="email"
+               required/>
+      </div>
+    </div>
+    <div class="gap">
+      <button class="btn"
+              type="button"
+              nzType="primary"
+              [disabled]="this.LoginResiterForm.invalid"
+              (click)="this.submit()"
+              [textContent]="this.loginStatus ? '登录':'注册'"
+              nz-button></button>
+      </div>
+  </form>
+</div>
+<div class="ant-modal-footer">
+asdf
+</div>

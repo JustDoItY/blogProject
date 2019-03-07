@@ -1,0 +1,38 @@
+<div class="header text-center">评论</div>
+
+<div class="form-group header">
+  <label class="control-label">
+    <nz-avatar [nzSrc]="this.avatar"></nz-avatar>
+  </label>
+  <input class="form-control"
+         maxlength="50"
+         nz-input 
+         placeholder="输入评论"
+         [(ngModel)]="this.content">&nbsp;
+  <button nz-button
+          nzType="primary"
+          (click)="this.submit()">评论</button>
+</div>
+
+<div class="comments" *ngIf="this.comments.length; else noRes">
+  <ng-container *ngFor="let item of this.comments; trackBy: trackByIndex">
+    <div class="comment">
+      <a [routerLink]="'/peopleHome/'+item.fromID._id">
+        <nz-avatar [nzSrc]="item.fromID.avatar"></nz-avatar>
+      </a>
+      <div class="content">
+          <div>
+            <a [routerLink]="'/peopleHome/'+item.fromID._id"
+               [textContent]="item.fromID.userName"></a>
+            <span style="padding: 0 5px;">{{item.writeDate | date:'yyyy年MM月dd日-HH时' || '错误时间'}}</span>
+          </div>
+          <div [textContent]="item.content"></div>
+      </div>
+    </div>
+  </ng-container>  
+</div>
+<ng-template #noRes>
+  <div class="noRes">
+    没有评论
+  </div>
+</ng-template>

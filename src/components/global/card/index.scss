@@ -1,0 +1,40 @@
+:host {
+  display: block;
+  padding: 15px 0px;
+  border-bottom: 1px solid #dbd9d9;
+
+  &:hover {
+    background-color: #fcfcfc;
+  }
+
+  .container {
+    &:visited {
+      color: #909090;
+    }
+  }
+
+  .cardLink {
+    font-size: 20px;
+    color: #2e3135;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &:visited {
+      color: #909090;
+    }
+  }
+
+  .ant-menu {
+    border: none;
+    .ant-menu-item {
+      border: 0;
+      padding: 0 5px 0 0;
+
+      &:hover {
+        color: black;
+      }
+    }
+  }
+}

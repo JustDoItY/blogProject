@@ -1,0 +1,23 @@
+<div class="pageContainer">
+  <div class="header">
+    <input type="text"
+           class="title"
+           nz-input
+           maxlength="30"
+           placeholder="请输入标题(限定长度30)"
+           [(ngModel)]="this.title"
+           name="userName"
+           required/>
+  </div>
+  <div class="edit">
+    <ckeditor-component [mycontent]="this.articleContent" (contentChange)="this.articleContent=$event"></ckeditor-component>
+  </div>
+  <div class="bottom">
+    <button class="btn"
+            type="button"
+            nzType="primary"
+            [disabled]="this.articleContent.length > this.maxlength"
+            (click)="this.save()"
+            nz-button>保存</button>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+@import './color.scss';
+@import './page.scss';
+
+body {
+  background-color: #f4f5f5;
+}
+
+.ant-modal {
+  width: 300px !important;
+}
