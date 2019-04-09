@@ -1,6 +1,6 @@
 <div class="pageContainer">
-  <div *ngIf="this.followerPeople.length; else noRes">
-    <ng-container *ngFor="let item of this.followerPeople; trackBy: trackByIndex">
+  <div *ngIf="this.follower.length; else noRes">
+    <ng-container *ngFor="let item of this.follower; trackBy: trackByIndex">
       <div class="card">
         <a [routerLink]="'/peopleHome/'+item.followedPerson._id">
           <nz-avatar [nzSrc]="item.followedPerson.avatar"></nz-avatar>

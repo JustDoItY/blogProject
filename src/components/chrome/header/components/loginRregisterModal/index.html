@@ -9,9 +9,9 @@
     <div class="gap">
       <input type="text"
              nz-input
-             maxlength="10"
+             maxlength="30"
              class="form-control"
-             placeholder="请输入用户名"
+             placeholder="请输入用户名或者邮箱"
              [(ngModel)]="this.userInfo.userName"
              name="userName"
              required/>
@@ -50,5 +50,5 @@
   </form>
 </div>
 <div class="ant-modal-footer">
-asdf
+  <a routerLink="/resetPaw" (click)="this.modal.close()">？忘记密码</a>
 </div>

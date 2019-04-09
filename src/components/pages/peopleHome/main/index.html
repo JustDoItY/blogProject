@@ -15,13 +15,12 @@
     <nz-card style="width: 100%;">
         <nz-card-tab>
           <nz-tabset nzSize="large" [(nzSelectedIndex)]="index">
-            <nz-tab nzTitle="收藏"></nz-tab>
             <nz-tab nzTitle="关注"></nz-tab>
             <nz-tab nzTitle="文章"></nz-tab>
           </nz-tabset>
         </nz-card-tab>
-        <attention-component *ngIf="index===1" [userId]="this.userInfo._id"></attention-component>
-        <articles-component *ngIf="index===2" [userId]="this.userInfo._id"></articles-component>
+        <attention-component *ngIf="index===0" [follower]="this.follower"></attention-component>
+        <articles-component *ngIf="index===1" [userId]="this.userInfo._id"></articles-component>
     </nz-card>
   </div>
 </div>

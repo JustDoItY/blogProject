@@ -7,6 +7,7 @@ import {
   PageEditArticleComponent,
   PageHomeComponent,
   PagePeopleHomeComponent,
+  PageResetPawComponent,
   PageResourcesComponent,
   PageUserInfoComponent,
   PageViewArticleComponent,
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'dynamic', component: PageDynamicComponent },
   { path: 'peopleHome/:id', component: PagePeopleHomeComponent },
   { path: 'userInfo', component: PageUserInfoComponent },
+  { path: 'resetPaw', component: PageResetPawComponent },
   { path: '**', redirectTo: '/home', pathMatch: 'full' },
 ];
 

@@ -1,0 +1,65 @@
+<div class="pageContainer">
+    <nz-steps [nzCurrent]="current">
+      <nz-step nzTitle="邮箱验证"></nz-step>
+      <nz-step nzTitle="修改密码"></nz-step>
+    </nz-steps>
+  
+    <div class="steps-content">
+      <div *ngIf="current === 0">
+        <div nz-row class="marginTop">
+          <div nz-col nzSpan="12">
+            <input type="email"
+                   nz-input
+                   class="form-control"
+                   placeholder="请输入邮箱"
+                   [(ngModel)]="this.emailAddress"
+                   name="email"
+                   required/>
+          </div>
+          <div nz-col nzSpan="12">
+            <button (click)="this.sendEmail()"
+                    class="btn"
+                    type="button"
+                    [disabled]="!this.emailAddress || this.isSend"
+                    nz-button
+                    nzType="primary">发送验证码<span *ngIf="this.isSend">({{interval}})</span></button>
+          </div>
+        </div>
+        <div nz-row class="marginTop">
+          <div nz-col nzSpan="24">
+            <input type="text"
+                   nz-input
+                   placeholder="请输入验证码"
+                   [(ngModel)]="this.emailCode">
+          </div>
+        </div>
+        <div nz-row class="bottom marginTop">
+          <button nzType="primary"
+                  [disabled]="!this.emailCode || !this.emailAddress"
+                  (click)="this.verifyEmailCode()"
+                  nz-button>下一步</button>
+        </div>
+      </div>
+      <div *ngIf="current === 1">
+        <div nz-row>
+          <div nz-col>
+            <input type="password"
+                   nz-input
+                   class="form-control"
+                   placeholder="请输入密码"
+                   [(ngModel)]="this.paw"/>
+            <input type="password"
+                   nz-input
+                   class="form-control"
+                   placeholder="请输入密码"
+                   [(ngModel)]="this.confirmPaw"/>
+          </div>
+        </div>
+        <div nz-row class="bottom marginTop">
+          <button nzType="primary"
+                  (click)="this.submit()"
+                  nz-button>提交</button>
+          </div>
+      </div>
+    </div>
+</div>

@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { NzModalRef } from 'ng-zorro-antd';
 import { NzMessageService } from 'ng-zorro-antd';
 
-import { BackInfoModel } from '@/helpers';
+import { emailVerify } from '@/helpers';
 import { LoginRegisterApi } from '@/services';
 
 @Component({
@@ -12,7 +12,7 @@ import { LoginRegisterApi } from '@/services';
   styleUrls: ['./index.scss'],
 })
 export class LoginRegisterModalComponent {
-  @Input() loginStatus = true; // 登陆或注册状态，默认登陆状态
+  @Input() loginStatus = true; // 登陆或注册状态，默认处于登陆状态
   @Input() title = '登陆';
 
   private userInfo = {
@@ -27,7 +27,12 @@ export class LoginRegisterModalComponent {
     private router: Router) {}
 
   submit() {
-    LoginRegisterApi.loginRegister(this.userInfo, this.loginStatus).then(res => {
+    // 登录状态下检测登录类型，邮箱或用户名
+    const loginType = this.loginStatus && emailVerify(this.userInfo.userName) ? 'email' : 'username';
+    // 注册用户状态下检测邮箱pattern正确
+    if (!this.loginStatus && !emailVerify(this.userInfo.email)) return this.msg.error('请输入正确的邮箱');
+
+    LoginRegisterApi.loginRegister(this.userInfo, this.loginStatus, loginType).then(res => {
       if (res.data.retCode === 'success') {
         if (this.loginStatus) { // 登录
           this.modal.close(res.data.content);

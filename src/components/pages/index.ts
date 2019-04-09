@@ -6,3 +6,4 @@ export * from './resources';
 export * from './dynamic';
 export * from './peopleHome';
 export * from './userInfo';
+export * from './resetPaw';

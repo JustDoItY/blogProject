@@ -2,7 +2,7 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd';
 
-import { BackInfoModel } from '@/helpers';
+import { emailVerify } from '@/helpers';
 import { LoginRegisterApi, UserApi } from '@/services';
 
 @Component({
@@ -48,6 +48,8 @@ export class PageUserInfoComponent {
 
   // 上传改变触发
   async submit() {
+    if (!emailVerify(this.userInfo.email)) return this.msg.error('请输入正确的邮箱');
+
     const { data } = await UserApi.setUserInfo(this.userInfo);
     this.msg.info(data.retMsg);
   }
