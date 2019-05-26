@@ -14,7 +14,7 @@
     <pre>{{content}}</pre>
   </ng-template>
   <div style="float: right" *ngIf="this.edit">
-    <button nz-button nzType="primary" (click)="this.editArticle()">编辑</button>&nbsp;
+    <button nz-button nzType="primary" *ngIf="!this.collectionID" (click)="this.editArticle()">编辑</button>&nbsp;
     <button nz-button nzType="default" (click)="this.deleteArticle()">删除</button>
   </div>
   <div>

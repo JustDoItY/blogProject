@@ -26,10 +26,10 @@ export class ArticlesComponent extends BaseComponent implements OnInit {
     this.edit = data.edit; // 如果处于登录状态，设置为true， 默认为false
   }
 
-  async deleteArticle(id) {
+  async deleteArticle(id, i) {
     const {data} = await ArticleApi.deleteArticle(id);
     if (data.retCode === 'success') {
-      this.articles = data.content; // 删除文章后，更新文章列表
+      this.articles.splice(i, 1);
       this.msg.success(data.retMsg);
     } else {
       this.msg.error(data.retMsg); // 删除文章出错，提示信息

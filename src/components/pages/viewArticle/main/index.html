@@ -8,6 +8,8 @@
       <span>点赞数{{article.good}}</span>
       <button class="attention float-right"
               nz-button
+              *ngIf="this.fromID"
+              (click)="this.addCollection()"
               nzType="primary">收藏</button>
   </div>
   <h1 class="article-title">{{article.title}}</h1>

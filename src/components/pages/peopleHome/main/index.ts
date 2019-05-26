@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd';
 
-import { ArticleApi } from '@/services';
 import { AttentionApi, UserApi } from '@/services';
 
 @Component({

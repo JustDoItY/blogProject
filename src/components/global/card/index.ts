@@ -12,6 +12,7 @@ import { ArticlePointGoodApi, DynamicPointGoodApi } from '@/services';
 })
 export class CardComponent extends BaseComponent {
   @Input() id: string; // 文章ID
+  @Input() collectionID: string; // 收藏ID
   @Input() user: { _id, userName };
   @Input() title: string;
   @Input() content: string;
@@ -34,7 +35,8 @@ export class CardComponent extends BaseComponent {
   }
 
   deleteArticle() {
-    this.delete.emit(this.id);
+    // 只有收藏中才有collectionID
+    this.delete.emit(this.collectionID || this.id);
   }
 
   callback(data: BackInfoModel) {

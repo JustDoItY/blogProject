@@ -1,5 +1,5 @@
 <div class="pageContainer">
-  <div *ngIf="this.follower.length; else noRes">
+  <ng-container *ngIf="this.follower.length; else noRes">
     <!-- 遍历从后端拿回数据，遍历显示 -->
     <ng-container *ngFor="let item of this.follower; index as i;trackBy: trackByIndex">
       <div class="card">
@@ -11,7 +11,7 @@
         </div>
       </div>
     </ng-container>
-  </div>
+  </ng-container>
   <ng-template #noRes>
     <div class="noRes">
       此童鞋还没有关注小伙伴😯哦。。。
