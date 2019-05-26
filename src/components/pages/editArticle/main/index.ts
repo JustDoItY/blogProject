@@ -39,8 +39,8 @@ export class PageEditArticleComponent implements OnInit {
         if (this.articleId) {
           const { data: art } = await SearchApi.getArticle(this.articleId);
           // 用获取到的标题，文章内容填充编辑器。默认情况下为发布状态，标题内容为空
-          this.title = art.article.title;
-          this.articleContent = art.article.content;
+          this.title = art.content.title;
+          this.articleContent = art.content.content;
         }
       }
     }

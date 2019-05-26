@@ -1,23 +1,28 @@
 <div class="pageContainer">
-  <div class="header">
-      <a [routerLink]="'/peopleHome/'+this.article.userID._id">
-        <nz-avatar [nzSize]="64" [nzSrc]="this.article.userID.avatar"></nz-avatar>
-      </a>
-      <span style="padding: 0 5px; font-size: 20px">{{article.userID.userName}}</span>
-      <span style="padding: 0 5px;">{{article.writeDate | date:'yyyy年MM月dd日'}}</span>
-      <span>点赞数{{article.good}}</span>
-      <button class="attention float-right"
-              nz-button
-              *ngIf="this.fromID"
-              (click)="this.addCollection()"
-              nzType="primary">收藏</button>
-  </div>
-  <h1 class="article-title">{{article.title}}</h1>
-  <div style="padding-left: 10px" [innerHTML]="this.article.content"></div>
-  <nz-divider></nz-divider>
-  <comment-component [avatar]="this.avatar"
-                     [articleID]="this.article._id"
-                     [fromID]="this.fromID"
-                     [comments]="this.comments"
-                     [toID]="this.article.userID._id"></comment-component>
+  <ng-container *ngIf="!this.pageError; else error">
+    <div class="header">
+        <a [routerLink]="'/peopleHome/'+this.article.userID._id">
+          <nz-avatar [nzSize]="64" [nzSrc]="this.article.userID.avatar"></nz-avatar>
+        </a>
+        <span style="padding: 0 5px; font-size: 20px">{{article.userID.userName}}</span>
+        <span style="padding: 0 5px;">{{article.writeDate | date:'yyyy年MM月dd日'}}</span>
+        <span>点赞数{{article.good}}</span>
+        <button class="attention float-right"
+                nz-button
+                *ngIf="this.fromID"
+                (click)="this.addCollection()"
+                nzType="primary">收藏</button>
+    </div>
+    <h1 class="article-title">{{article.title}}</h1>
+    <div style="padding-left: 10px" [innerHTML]="this.article.content"></div>
+    <nz-divider></nz-divider>
+    <comment-component [avatar]="this.avatar"
+                       [articleID]="this.article._id"
+                       [fromID]="this.fromID"
+                       [comments]="this.comments"
+                       [toID]="this.article.userID._id"></comment-component>
+  </ng-container>
+  <ng-template #error>
+    文章已被删除
+  </ng-template>
 </div>
