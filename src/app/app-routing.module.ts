@@ -8,7 +8,6 @@ import {
   PageHomeComponent,
   PagePeopleHomeComponent,
   PageResetPawComponent,
-  PageResourcesComponent,
   PageUserInfoComponent,
   PageViewArticleComponent,
 } from '@/components';
@@ -18,7 +17,6 @@ const routes: Routes = [
   { path: 'edit', component: PageEditArticleComponent },
   { path: 'view/:id', component: PageViewArticleComponent },
   { path: 'about', component: PageAboutComponent },
-  { path: 'resources', component: PageResourcesComponent },
   { path: 'dynamic', component: PageDynamicComponent },
   { path: 'peopleHome/:id', component: PagePeopleHomeComponent },
   { path: 'userInfo', component: PageUserInfoComponent },

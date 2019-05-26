@@ -21,11 +21,14 @@ export class PagePeopleHomeComponent {
   id = this.activeRouter.snapshot.paramMap.get('id');
 
   follower = [];
+  fromID = '';
+  edit = false;
 
   constructor(
     private router: Router,
     private msg: NzMessageService,
     private activeRouter: ActivatedRoute) {
+
     this.getUserInfo();
     // 监听navigationend事件，触发更新, 解决路由参数改变，页面不刷新问题
     this.router.events.subscribe(event => {
@@ -42,17 +45,29 @@ export class PagePeopleHomeComponent {
     if (data.userInfo) { // 如果返回用户或作者信息，就设置信息
       this.userInfo = data.userInfo;
       this.getAttention(data.userInfo._id);
+      this.loginStatus = data.loginStatus;
+      this.fromID = data.fromID;
+      this.edit = data.edit;
     } else { // 信息为空，跳转到首页
       this.router.navigate(['/home']);
       this.msg.error('未知错误');
-      return;
     }
-    this.loginStatus = data.loginStatus;
   }
 
   getAttention(id) { // 获取关注人数
     AttentionApi.getAttention(id).then(({data}) => {
       this.follower = data.content;
+    });
+  }
+
+  saveAttention() {
+    AttentionApi.saveAttention({follower: this.fromID, followedPerson: this.userInfo._id})
+    .then((res) => {
+      if (res.data.retCode === 'success') {
+        this.msg.success(res.data.retMsg);
+      } else {
+        this.msg.warning(res.data.retMsg);
+      }
     });
   }
 }

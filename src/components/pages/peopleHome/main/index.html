@@ -3,11 +3,17 @@
     <nz-avatar [nzSize]="64" [nzSrc]="this.userInfo.avatar"></nz-avatar>
     <span class="userName" [textContent]="this.userInfo.userName"></span>
     <div class="float-right"
-         *ngIf="this.loginStatus"
          style="padding-top: 10px">
       <button nz-button
+              *ngIf="this.edit;else attention"
               routerLink="/userInfo"
               nzType="primary">编辑个人资料</button>
+      <ng-template #attention>
+        <button nz-button
+                nzType="primary"
+                *ngIf="this.loginStatus"
+                (click)="this.saveAttention()">关注</button>
+      </ng-template>
     </div>
   </div>
 
@@ -17,10 +23,17 @@
           <nz-tabset nzSize="large" [(nzSelectedIndex)]="index">
             <nz-tab nzTitle="关注"></nz-tab>
             <nz-tab nzTitle="文章"></nz-tab>
+            <nz-tab nzTitle="收藏"></nz-tab>
           </nz-tabset>
         </nz-card-tab>
-        <attention-component *ngIf="index===0" [follower]="this.follower"></attention-component>
-        <articles-component *ngIf="index===1" [userId]="this.userInfo._id"></articles-component>
+        <attention-component *ngIf="index===0"
+                             [edit]="this.edit"
+                             [follower]="this.follower"></attention-component>
+        <articles-component *ngIf="index===1"
+                            [userId]="this.userInfo._id"></articles-component>
+        <collections-component *ngIf="index===2"
+                              [edit]="this.edit"
+                              [userId]="this.userInfo._id"></collections-component>
     </nz-card>
   </div>
 </div>

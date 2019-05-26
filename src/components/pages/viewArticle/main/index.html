@@ -7,10 +7,8 @@
       <span style="padding: 0 5px;">{{article.writeDate | date:'yyyy年MM月dd日'}}</span>
       <span>点赞数{{article.good}}</span>
       <button class="attention float-right"
-              *ngIf="this.fromID && this.fromID !== this.article.userID._id"
               nz-button
-              nzType="primary"
-              (click)="this.saveAttention()">关注</button>
+              nzType="primary">收藏</button>
   </div>
   <h1 class="article-title">{{article.title}}</h1>
   <div style="padding-left: 10px" [innerHTML]="this.article.content"></div>

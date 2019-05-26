@@ -20,14 +20,25 @@
       <input type="password"
              nz-input
              class="form-control"
+             maxlength="30"
              placeholder="请输入密码"
              [(ngModel)]="this.userInfo.paw"
              name="paw"
-             required/>
+             required/>  
     </div>
 
     <!-- 注册状态表单项 -->
     <div *ngIf="!this.loginStatus">
+      <div class="gap">
+        <input type="password"
+              nz-input
+              class="form-control"
+              maxlength="30"
+              placeholder="请再次输入密码"
+              [(ngModel)]="this.checkPaw"
+              name="paw"
+              required/>  
+      </div>
       <div class="gap">
         <input type="email"
                nz-input

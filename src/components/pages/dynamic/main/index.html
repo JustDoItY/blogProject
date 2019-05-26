@@ -17,7 +17,12 @@
   </div>
 
   <div>
+    <!-- 遍历从服务器获取到的动态信息，遍历数组显示出来，每一个card-component都是个卡片组件 -->
     <ng-container *ngIf="this.dynamics.length; else noRes">
+        <!-- 
+          ng-container为angular自带特性，作为一个临时容器，在渲染到页面上不会表现出来。
+          ngFor的作用时遍历一个数组。如下，遍历dynamics数组，获取一条动态，传入card-component。 
+        -->
         <ng-container *ngFor="let dynamic of this.dynamics; trackBy: trackByIndex">
           <card-component [user]="dynamic.userID"
                           [id]="dynamic._id"
@@ -27,6 +32,7 @@
                           [writeDate]="dynamic.writeDate"></card-component>
         </ng-container>
       </ng-container>
+      <!-- 当没有查到动态，显示 -->
       <ng-template #noRes>
         <div class="text-center font">
           没有查到动态

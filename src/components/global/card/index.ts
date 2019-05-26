@@ -29,6 +29,7 @@ export class CardComponent extends BaseComponent {
   }
 
   editArticle() {
+    // id: 文章id，文章id作为参数，导航到编辑页面
     this.router.navigate(['./edit', {id: this.id}]);
   }
 

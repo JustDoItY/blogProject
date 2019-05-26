@@ -7,7 +7,15 @@
     <div class="steps-content">
       <div *ngIf="current === 0">
         <div nz-row class="marginTop">
-          <div nz-col nzSpan="12">
+          <div nz-col nzSpan="3">
+            <button (click)="this.sendEmail()"
+                    class="btn"
+                    type="button"
+                    [disabled]="!this.emailAddress || this.isSend"
+                    nz-button
+                    nzType="primary">发送<span *ngIf="this.isSend">({{interval}})</span></button>
+          </div>
+          <div nz-col nzSpan="20">
             <input type="email"
                    nz-input
                    class="form-control"
@@ -16,17 +24,12 @@
                    name="email"
                    required/>
           </div>
-          <div nz-col nzSpan="12">
-            <button (click)="this.sendEmail()"
-                    class="btn"
-                    type="button"
-                    [disabled]="!this.emailAddress || this.isSend"
-                    nz-button
-                    nzType="primary">发送验证码<span *ngIf="this.isSend">({{interval}})</span></button>
-          </div>
         </div>
         <div nz-row class="marginTop">
-          <div nz-col nzSpan="24">
+          <div nz-col nzSpan="3">
+            <span style="margin-left: 10px;line-height: 32px">验证码</span>
+          </div>
+          <div nz-col nzSpan="20">
             <input type="text"
                    nz-input
                    placeholder="请输入验证码"
@@ -41,17 +44,21 @@
         </div>
       </div>
       <div *ngIf="current === 1">
-        <div nz-row>
+        <div nz-row class="marginTop">
           <div nz-col>
             <input type="password"
                    nz-input
                    class="form-control"
                    placeholder="请输入密码"
                    [(ngModel)]="this.paw"/>
+          </div>
+        </div>
+        <div nz-row class="marginTop">
+          <div nz-col>
             <input type="password"
                    nz-input
                    class="form-control"
-                   placeholder="请输入密码"
+                   placeholder="请验证密码"
                    [(ngModel)]="this.confirmPaw"/>
           </div>
         </div>

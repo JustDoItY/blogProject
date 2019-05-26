@@ -1,10 +1,14 @@
 <div class="pageContainer">
   <div *ngIf="this.follower.length; else noRes">
-    <ng-container *ngFor="let item of this.follower; trackBy: trackByIndex">
+    <!-- 遍历从后端拿回数据，遍历显示 -->
+    <ng-container *ngFor="let item of this.follower; index as i;trackBy: trackByIndex">
       <div class="card">
         <a [routerLink]="'/peopleHome/'+item.followedPerson._id">
           <nz-avatar [nzSrc]="item.followedPerson.avatar"></nz-avatar>
-        </a>{{item.followedPerson.userName}}
+        </a>&nbsp;&nbsp;{{item.followedPerson.userName}}
+        <div style="float: right" *ngIf="this.edit">
+          <button nz-button nzType="default" (click)="this.deleteFollower(item._id, i)">取消关注</button>
+        </div>
       </div>
     </ng-container>
   </div>

@@ -10,4 +10,8 @@ export const AttentionApi = {
   getAttention(follower) {
     return axios.get(`${url}`, {params: {follower}});
   },
+
+  deleteFollower(id) {
+    return axios.delete(`${url}`, {params: {id}});
+  },
 };

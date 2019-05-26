@@ -22,8 +22,10 @@ export class PageHomeComponent extends BaseComponent implements OnInit {
     this.articles = data.articles;
   }
 
+  // 改变搜索字段，从后台查询数据
   change() {
     const field = htmlEscape(this.searchKey.trim());
+    // 在5毫秒内只查询一次，输入过快出发函数，取消前一次timeout
     clearTimeout(this.timeId);
     if (field === '') return this.getPage();
     // 延迟查询

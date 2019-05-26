@@ -27,6 +27,7 @@ export class PageEditArticleComponent implements OnInit {
     private router: Router) {}
 
     async ngOnInit() {
+      // 获取路由请求参数，如果处于首次编写，id不存在，id用来区分编辑或发布
       this.articleId = this.activedRouter.snapshot.params.id;
       // 查询是否登录状态，如果非登录状态，
       const {data} = await LoginRegisterApi.getSession();
@@ -37,6 +38,7 @@ export class PageEditArticleComponent implements OnInit {
       } else {
         if (this.articleId) {
           const { data: art } = await SearchApi.getArticle(this.articleId);
+          // 用获取到的标题，文章内容填充编辑器。默认情况下为发布状态，标题内容为空
           this.title = art.article.title;
           this.articleContent = art.article.content;
         }
@@ -48,7 +50,7 @@ export class PageEditArticleComponent implements OnInit {
   }
 
   async save() {
-    if (!this.title.trim() || !this.articleContent) return this.msg.warning('标题或不能为空');
+    if (!this.title.trim() || !this.articleContent) return this.msg.warning('标题或内容不能为空');
     const {data} = await ArticleApi.saveArticle({
       title: htmlEscape(this.title.trim()),
       articleContent: this.articleContent,

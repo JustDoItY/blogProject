@@ -22,18 +22,18 @@ export class ArticlesComponent extends BaseComponent implements OnInit {
 
   async ngOnInit() {
     const {data} = await ArticleApi.getArticlesByUserId(this.userId);
-    this.articles = data.articles;
-    this.edit = data.edit;
+    this.articles = data.articles; // 从后台获取的文章
+    this.edit = data.edit; // 如果处于登录状态，设置为true， 默认为false
   }
 
   async deleteArticle(id) {
     const {data} = await ArticleApi.deleteArticle(id);
     if (data.retCode === 'success') {
-      this.articles = data.content;
+      this.articles = data.content; // 删除文章后，更新文章列表
       this.msg.success(data.retMsg);
     } else {
-      this.msg.error(data.retMsg);
-      this.edit = false;
+      this.msg.error(data.retMsg); // 删除文章出错，提示信息
+      this.edit = false; // 设置为不可编辑状态
     }
   }
 }

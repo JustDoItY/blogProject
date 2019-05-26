@@ -23,7 +23,7 @@ export class PageViewArticleComponent implements OnInit {
       avatar: '',
     },
   };
-  fromID = '';
+  fromID = ''; // 关注者
   comments = [];
   avatar = ''; // 登录用户的avatar
 
@@ -38,16 +38,5 @@ export class PageViewArticleComponent implements OnInit {
     this.avatar  = data.avatar;
     // 文章ID返回后，查询评论内容
     CommentApi.getComment(this.article._id).then((res) => this.comments = res.data.content);
-  }
-
-  saveAttention() {
-    AttentionApi.saveAttention({follower: this.fromID, followedPerson: this.article.userID._id})
-    .then((res) => {
-      if (res.data.retCode === 'success') {
-        this.msg.success(res.data.retMsg);
-      } else {
-        this.msg.warning(res.data.retMsg);
-      }
-    });
   }
 }
