@@ -34,23 +34,23 @@ export class PageResetPawComponent {
   sendEmail() {
     if (!emailVerify(this.emailAddress)) return this.msg.error('请输入正确的邮箱');
 
-    this.isSend = true;
-    // 60秒倒计时
-    this.timer = setInterval(() => {
-      --this.interval;
-      if (this.interval === 0) {
-        clearInterval(this.timer);
-        this.verifyCode = '';
-        this.isSend = false;
-      }
-    }, 1000);
-
     this.confirmAddress = this.emailAddress; // 记录邮箱地址
     axios.post('/api/emailcode', {eml: this.confirmAddress}).then(({data}) => {
       this.msg.info(data.retMsg);
       this.verifyCode = data.content;
       if (data.retCode === 'success') {
         this.userExist = true;
+        // 发送成功，开始计时
+        this.isSend = true;
+        // 60秒倒计时
+        this.timer = setInterval(() => {
+          --this.interval;
+          if (this.interval === 0) {
+            clearInterval(this.timer);
+            this.verifyCode = '';
+            this.isSend = false;
+          }
+        }, 1000);
       } else {
         this.userExist = false;
       }

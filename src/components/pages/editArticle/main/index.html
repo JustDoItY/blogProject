@@ -10,7 +10,7 @@
            required/>
   </div>
   <div class="edit">
-    <ckeditor-component [mycontent]="this.articleContent" (contentChange)="this.articleContent=$event">
+    <ckeditor-component [mycontent]="this.articleContent" [maxlength]="this.maxlength" (contentChange)="this.articleContent=$event">
     </ckeditor-component>
   </div>
   <div class="bottom">

@@ -33,7 +33,7 @@ export class PagePeopleHomeComponent {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         this.id = this.activeRouter.snapshot.paramMap.get('id');
-        this.getUserInfo();
+        if (this.id) this.getUserInfo();
       }
     });
   }
@@ -53,7 +53,7 @@ export class PagePeopleHomeComponent {
     }
   }
 
-  getAttention(id) { // 获取关注人数
+  getAttention(id) { // 获取关注人员
     AttentionApi.getAttention(id).then(({data}) => {
       this.follower = data.content;
     });
