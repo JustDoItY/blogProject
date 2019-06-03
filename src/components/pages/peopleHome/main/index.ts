@@ -53,7 +53,7 @@ export class PagePeopleHomeComponent {
     }
   }
 
-  getAttention(id) { // 获取关注人数
+  getAttention(id) { // 获取关注人员
     AttentionApi.getAttention(id).then(({data}) => {
       this.follower = data.content;
     });

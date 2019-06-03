@@ -4,7 +4,7 @@
            nz-input
            placeholder="搜索文章"
            [(ngModel)]="this.searchKey"
-           (ngModelChange)="this.change()">
+           (ngModelChange)="this.fieldChange()">
   </nz-input-group>
   <ng-container *ngIf="this.articles.length; else noRes">
     <ng-container *ngFor="let article of this.articles; trackBy: trackByIndex">
@@ -16,6 +16,11 @@
                       [content]="article.content"
                       [writeDate]="article.writeDate"></card-component>
     </ng-container>
+    <div style="text-align: center; margin-top: 20px">
+      <nz-pagination [nzPageIndex]="1"
+                     [nzTotal]="this.total*10"
+                     (nzPageIndexChange)="this.pageIndexChange($event)"></nz-pagination>
+    </div>
   </ng-container>
   <ng-template #noRes>
     <div class="text-center font">

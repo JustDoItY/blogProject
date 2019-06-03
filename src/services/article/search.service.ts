@@ -3,17 +3,14 @@ import axios from 'axios';
 const url = '/api/search';
 
 export const SearchApi = {
-  getPage(page) {
+  getPage(pageIndex: number, field: string = '') {
     return axios.get(`${url}`, { params: {
-      page,
+      pageIndex,
+      field,
     }});
   },
 
   getArticle(id: string) {
-    return axios.get(`${url}/${id}`);
-  },
-
-  searchBy(field: string) {
-    return axios.post(url, {field});
+    return axios.post(`${url}`, {id});
   },
 };

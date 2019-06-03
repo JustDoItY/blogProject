@@ -9,7 +9,7 @@ export class CkeditorComponent implements OnInit {
   ckeConfig: any;
 
   @Input() mycontent: string = '';
-  @Input() maxlenght = 2000;
+  @Input() maxlength = 2000;
 
   @ViewChild('myckeditor') ckeditor: any;
 

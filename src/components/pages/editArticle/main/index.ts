@@ -19,7 +19,7 @@ export class PageEditArticleComponent implements OnInit {
   articleContent = '';
   title = '';
   articleId: '';
-  maxlength = 2000;
+  maxlength = 20000;
 
   constructor(
     private msg: NzMessageService,
