@@ -38,6 +38,7 @@ export class CommentComponent extends BaseComponent {
     if (data.retCode === 'success') {
       this.comments = data.content;
       this.content = '';
+      debugger;
     } else {
       this.msg.warning(data.retMsg);
     }

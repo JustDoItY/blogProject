@@ -46,7 +46,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
         clearInterval(this.timerID);
       }
     } catch (error) {
+      this.msg.error('服务器重启或未知故障，稍后请刷新页面，重新登录');
+      this.setLoginInformation(false);
       clearInterval(this.timerID);
+      this.router.navigate(['/home']); // 返回首页
     }
   }
   // 登录注册弹出式模态框
@@ -76,7 +79,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
       clearInterval(this.timerID);
       this.router.navigate(['/home']); // 退出登录 返回首页
     } else {
-      this.msg.error('退出登录失败，请重新登录');
+      this.msg.error('退出登录失败，请再次操作');
     }
   }
   // 设置用户信息
