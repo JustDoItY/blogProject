@@ -1,11 +1,25 @@
 <div class="pageContainer">
-  <nz-input-group [nzSuffix]="suffixIconSearch">
-    <input type="text"
-           nz-input
-           placeholder="搜索文章"
-           [(ngModel)]="this.searchKey"
-           (ngModelChange)="this.fieldChange()">
-  </nz-input-group>
+  <div nz-row>
+    <div nz-col nzSpan="18" style="height: 52px; line-height: 52px;">
+      <ul nz-menu nzMode="horizontal">
+        <li nz-menu-item style="height: 54px;">
+          <a (click)="this.modifyArticleSubject('all')">全部</a>&nbsp;&nbsp;
+        </li>
+        <li nz-menu-item *ngFor="let type of this.articleTypesArr; trackBy: trackByIndex">
+          <a (click)="this.modifyArticleSubject(type[0])">{{type[1]}}</a>
+        </li>
+      </ul>
+    </div>
+    <div nz-col nzSpan="6">
+      <nz-input-group style="width: 100%;left: 0" [nzSuffix]="suffixIconSearch">
+        <input type="text"
+               nz-input
+               placeholder="搜索文章"
+               [(ngModel)]="this.searchKey"
+               (ngModelChange)="this.fieldChange()">
+      </nz-input-group>
+    </div>
+  </div>
   <ng-container *ngIf="this.articles.length; else noRes">
     <ng-container *ngFor="let article of this.articles; trackBy: trackByIndex">
       <card-component [title]="article.title"

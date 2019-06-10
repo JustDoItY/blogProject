@@ -11,7 +11,7 @@
              nz-input
              maxlength="30"
              class="form-control"
-             placeholder="请输入用户名或者邮箱"
+             [placeholder]="this.loginStatus ? '请输入用户名或者邮箱' : '请输入用户名'"
              [(ngModel)]="this.userInfo.userName"
              name="userName"
              required/>

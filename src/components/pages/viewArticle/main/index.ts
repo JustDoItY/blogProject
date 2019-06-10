@@ -22,7 +22,7 @@ export class PageViewArticleComponent implements OnInit {
       avatar: '',
     },
   };
-  fromID = ''; // 关注者
+  fromID = ''; // 评论者
   comments = [];
   avatar = ''; // 登录用户的avatar
 
@@ -41,7 +41,9 @@ export class PageViewArticleComponent implements OnInit {
       this.fromID = data.loginID;
       this.avatar  = data.avatar;
       // 文章ID返回后，查询评论内容
-      CommentApi.getComment(this.article._id).then((res) => this.comments = res.data.content);
+      CommentApi.getComment(this.article._id).then((res) => {
+        this.comments = res.data.content;
+      });
     } else {
       this.pageError = true;
       this.errorInfo = '文章内容已被删除';

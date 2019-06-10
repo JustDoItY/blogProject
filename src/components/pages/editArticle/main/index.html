@@ -1,15 +1,22 @@
 <div class="pageContainer">
-  <div class="header">
-    <input type="text"
-           class="title"
-           nz-input
-           maxlength="30"
-           placeholder="请输入标题(限定长度30)"
-           [(ngModel)]="this.title"
-           name="userName"
-           required/>
+  <div nz-row>
+    <div nz-col [nzSpan]="18">
+      <input type="text"
+             class="title"
+             nz-input
+             maxlength="30"
+             placeholder="请输入标题(限定长度30)"
+             [(ngModel)]="this.title"
+             name="userName"
+             required/>
+    </div>
+    <div nz-col [nzSpan]="6">
+      <nz-select style="width: 100%;" [(ngModel)]="this.articleSubject" nzAllowClear nzPlaceHolder="Choose">
+          <nz-option *ngFor="let type of this.articleTypesArr" [nzValue]="type[0]" [nzLabel]="type[1]"></nz-option>
+      </nz-select>
+    </div>
   </div>
-  <div class="edit">
+  <div style="margin-top: 5px">
     <ckeditor-component [mycontent]="this.articleContent" [maxlength]="this.maxlength" (contentChange)="this.articleContent=$event">
     </ckeditor-component>
   </div>
