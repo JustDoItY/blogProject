@@ -62,10 +62,10 @@ export class PageEditArticleComponent implements OnInit {
     });
 
     if (data.retCode === 'success') {
-      this.msg.success('保存成功');
+      this.msg.success(data.retMsg);
+      this.router.navigate(['/home']);
     } else {
-      this.msg.warning('请重新登录');
+      this.msg.warning(data.retMsg);
     }
-    this.router.navigate(['/home']);
   }
 }

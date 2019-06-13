@@ -13,7 +13,7 @@ import { ArticlePointGoodApi, DynamicPointGoodApi } from '@/services';
 export class CardComponent extends BaseComponent {
   @Input() id: string; // 文章ID
   @Input() collectionID: string; // 收藏ID
-  @Input() user: { _id, userName };
+  @Input() user: { _id, userName }; // 作者信息
   @Input() title: string;
   @Input() content: string;
   @Input() writeDate: Date;
