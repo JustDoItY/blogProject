@@ -9,9 +9,9 @@
     <div class="gap">
       <input type="text"
              nz-input
-             maxlength="30"
+             maxlength="20"
              class="form-control"
-             [placeholder]="this.loginStatus ? '请输入用户名或者邮箱' : '请输入用户名'"
+             [placeholder]="this.loginStatus ? '用户名或者邮箱' : '用户名'+'，最大长度20'"
              [(ngModel)]="this.userInfo.userName"
              name="userName"
              required/>
@@ -20,8 +20,8 @@
       <input type="password"
              nz-input
              class="form-control"
-             maxlength="30"
-             placeholder="请输入密码"
+             placeholder="密码，6-8位字符数字"
+             pattern="[a-zA-Z0-9]{6,8}"
              [(ngModel)]="this.userInfo.paw"
              name="paw"
              required/>  
@@ -33,8 +33,8 @@
         <input type="password"
               nz-input
               class="form-control"
-              maxlength="30"
-              placeholder="请再次输入密码"
+              placeholder="验证密码"
+              pattern="[a-zA-Z0-9]{6,8}"
               [(ngModel)]="this.checkPaw"
               name="paw"
               required/>  
@@ -43,7 +43,7 @@
         <input type="email"
                nz-input
                class="form-control"
-               placeholder="请输入邮箱"
+               placeholder="邮箱"
                [(ngModel)]="this.userInfo.email"
                name="email"
                required/>

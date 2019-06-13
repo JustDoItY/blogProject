@@ -6,3 +6,7 @@ export function htmlEscape(str: string) {
       .replace(/</g, '&lt;')
       .replace(/>/g, '&gt;');
 }
+
+export function hasExcepctionalLetter(str: string) {
+  return (str || '').match(/[&'"<>@]/) ? true : false;
+}

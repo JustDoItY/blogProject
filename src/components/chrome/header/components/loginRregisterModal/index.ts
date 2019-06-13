@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { NzModalRef } from 'ng-zorro-antd';
 import { NzMessageService } from 'ng-zorro-antd';
 
-import { emailVerify } from '@/helpers';
+import { emailVerify, hasExcepctionalLetter } from '@/helpers';
 import { LoginRegisterApi } from '@/services';
 
 @Component({
@@ -28,10 +28,12 @@ export class LoginRegisterModalComponent {
     private router: Router) {}
 
   submit() {
+    let loginType = 'username'; // 用户名输入类型
     // 登录状态下检测登录类型，邮箱或用户名
-    const loginType = this.loginStatus && emailVerify(this.userInfo.userName) ? 'email' : 'username';
-    // 注册用户状态下检测邮箱pattern正确
-    if (!this.loginStatus) { // 注册状态下检测
+    if (this.loginStatus) {
+      loginType = emailVerify(this.userInfo.userName) ? 'email' : 'username';
+    } else { // 注册状态下检测
+      if (hasExcepctionalLetter(this.userInfo.userName)) return this.msg.error('用户名包含特殊字符');
       if (this.userInfo.paw !== this.checkPaw) return this.msg.error('两次密码输入不一致');
       if (!emailVerify(this.userInfo.email)) return this.msg.error('请输入正确的邮箱');
     }
